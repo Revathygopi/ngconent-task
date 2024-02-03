@@ -1,36 +1,82 @@
-
 <h1>LOGIN CREDENTIALS</h1>
 <form [formGroup]="login" class="login-details" (ngSubmit)="controlSubmit()">
   <div>
-    <input formControlName="fname" name="fname" placeholder="Enter First Name" type="text">
+    <input
+      formControlName="fname"
+      name="fname"
+      placeholder="Enter First Name"
+      type="text"
+    />
   </div>
   <div>
-    <input formControlName="lname" name="lname"  placeholder="Enter Last Name" type="text">
+    <input
+      formControlName="lname"
+      name="lname"
+      placeholder="Enter Last Name"
+      type="text"
+    />
   </div>
   <div>
-    <input  formControlName="email" name="email"  placeholder="Enter Email" type="email">
+    <input
+      formControlName="email"
+      name="email"
+      placeholder="Enter Email"
+      type="email"
+    />
   </div>
   <div>
-    <input formControlName="password"  name="password"  placeholder="Password" type="password">
+    <input
+      formControlName="password"
+      name="password"
+      placeholder="Password"
+      type="password"
+    />
   </div>
   <div>
-    <input formControlName="dob" name="dob"  placeholder="Enterdob" type="date">
+    <input
+      formControlName="dob"
+      name="dob"
+      placeholder="Enterdob"
+      type="date"
+    />
   </div>
-  <div class="add-phno" *ngFor="let x of getphnumberFromArray().controls;index as i">
-    <input [formControlName]="i" name="phnumber"  placeholder="Enter your number" type="number">
+  <div
+    class="add-phno"
+    *ngFor="let x of getphnumberFromArray().controls; index as i"
+  >
+    <input
+      [formControlName]="i"
+      name="phnumber"
+      placeholder="Enter your number"
+      type="number"
+    />
     <div class="no-add-remove-btn">
-    <button class="add-btn" type="button"(click)=" addnumber()">Add</button>
-    <button class="remove-btn" type="button"(click)=" removenumber(i)">Remove</button>
+      <button class="add-btn" type="button" (click)="addnumber()">Add</button>
+      <button class="remove-btn" type="button" (click)="removenumber(i)">
+        Remove
+      </button>
     </div>
   </div>
-  <div class="add-address" *ngFor="let x of getAddressFromArray().controls;index as i">
-    <input [formControlName]="i" name="address"  placeholder="Enter your address" type="text">
+  <div
+    class="add-address"
+    *ngFor="let x of getAddressFromArray().controls; index as i"
+  >
+    <input
+      [formControlName]="i"
+      name="address"
+      placeholder="Enter your address"
+      type="text"
+    />
     <div class="add-remove-btn">
-    <button class="add-btn" type="button"(click)=" controltoAddress()">Add</button>
-    <button class="remove-btn" type="button"(click)=" removeAdress(i)">Remove</button>
+      <button class="add-btn" type="button" (click)="controltoAddress()">
+        Add
+      </button>
+      <button class="remove-btn" type="button" (click)="removeAdress(i)">
+        Remove
+      </button>
     </div>
   </div>
   <div>
     <button class="submit-btn">Submit</button>
   </div>
-  </form>
+</form>
