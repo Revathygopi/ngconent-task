@@ -1,4 +1,5 @@
-<h1>LOGIN CREDENTIALS</h1>
+<body>
+  <h1>LOGIN CREDENTIALS</h1>
 <form [formGroup]="login" class="login-details" (ngSubmit)="controlSubmit()">
   <div>
     <input
@@ -41,32 +42,21 @@
     />
   </div>
   <div
-    class="add-phno"
-    *ngFor="let x of getphnumberFromArray().controls; index as i"
-  >
-    <input
-      [formControlName]="i"
-      name="phnumber"
-      placeholder="Enter your number"
-      type="number"
-    />
-    <div class="no-add-remove-btn">
-      <button class="add-btn" type="button" (click)="addnumber()">Add</button>
-      <button class="remove-btn" type="button" (click)="removenumber(i)">
-        Remove
-      </button>
-    </div>
-  </div>
-  <div
     class="add-address"
     *ngFor="let x of getAddressFromArray().controls; index as i"
   >
     <input
       [formControlName]="i"
-      name="address"
-      placeholder="Enter your address"
+      name="phno"
+      placeholder="Enter your phone nummber"
       type="text"
     />
+    <input
+    [formControlName]="i"
+    name="address"
+    placeholder="Enter your address"
+    type="text"
+  />
     <div class="add-remove-btn">
       <button class="add-btn" type="button" (click)="controltoAddress()">
         Add
@@ -80,3 +70,4 @@
     <button class="submit-btn">Submit</button>
   </div>
 </form>
+</body>

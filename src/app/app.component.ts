@@ -28,30 +28,30 @@ export class AppComponent {
     email: new FormControl(''),
     password: new FormControl(''),
     dob: new FormControl(''),
-    address: new FormArray([new FormControl('addr1')]),
-    phnumber: new FormArray([new FormControl('phn')]),
+    add: new FormArray([
+      new FormGroup(
+        {
+          phno:new FormControl(''),
+          address:new FormControl('')
+
+        }
+      )])
+     
+
   });
 
   getAddressFromArray() {
-    return this.login.get('address') as FormArray;
+    return this.login.get('add') as FormArray;
   }
 
   controltoAddress() {
-    this.getAddressFromArray().push(new FormControl('addr'));
+    this.getAddressFromArray().push(new FormControl('add'));
   }
   removeAdress(i: number) {
     this.getAddressFromArray().removeAt(i);
   }
-  getphnumberFromArray() {
-    return this.login.get('phnumber') as FormArray;
-  }
-
-  addnumber() {
-    this.getphnumberFromArray().push(new FormControl('phn'));
-  }
-  removenumber(i: number) {
-    this.getphnumberFromArray().removeAt(i);
-  }
+ 
+ 
 
   controlSubmit() {
     if (this.login.invalid) window.alert('please enter correct credentials');
