@@ -16,8 +16,12 @@
   <div>
     <input formControlName="dob" name="dob"  placeholder="Enterdob" type="date">
   </div>
-  <div>
-    <input formControlName="phno" name="phno"  placeholder="phone number" type="number">
+  <div class="add-phno" *ngFor="let x of getphnumberFromArray().controls;index as i">
+    <input [formControlName]="i" name="phnumber"  placeholder="Enter your number" type="number">
+    <div class="no-add-remove-btn">
+    <button class="add-btn" type="button"(click)=" addnumber()">Add</button>
+    <button class="remove-btn" type="button"(click)=" removenumber(i)">Remove</button>
+    </div>
   </div>
   <div class="add-address" *ngFor="let x of getAddressFromArray().controls;index as i">
     <input [formControlName]="i" name="address"  placeholder="Enter your address" type="text">
