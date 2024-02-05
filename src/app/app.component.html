@@ -1,73 +1,137 @@
 <body>
   <h1>LOGIN CREDENTIALS</h1>
-<form [formGroup]="login" class="login-details" (ngSubmit)="controlSubmit()">
-  <div>
-    <input
-      formControlName="fname"
-      name="fname"
-      placeholder="Enter First Name"
-      type="text"
-    />
-  </div>
-  <div>
-    <input
-      formControlName="lname"
-      name="lname"
-      placeholder="Enter Last Name"
-      type="text"
-    />
-  </div>
-  <div>
-    <input
-      formControlName="email"
-      name="email"
-      placeholder="Enter Email"
-      type="email"
-    />
-  </div>
-  <div>
-    <input
-      formControlName="password"
-      name="password"
-      placeholder="Password"
-      type="password"
-    />
-  </div>
-  <div>
-    <input
-      formControlName="dob"
-      name="dob"
-      placeholder="Enterdob"
-      type="date"
-    />
-  </div>
-  <div
-    class="add-address"
-    *ngFor="let x of getAddressFromArray().controls; index as i"
-  >
-    <input
-      [formControlName]="i"
-      name="phno"
-      placeholder="Enter your phone nummber"
-      type="text"
-    />
-    <input
-    [formControlName]="i"
-    name="address"
-    placeholder="Enter your address"
-    type="text"
-  />
-    <div class="add-remove-btn">
-      <button class="add-btn" type="button" (click)="controltoAddress()">
-        Add
-      </button>
-      <button class="remove-btn" type="button" (click)="removeAdress(i)">
-        Remove
-      </button>
+  <form [formGroup]="login" class="login-details" (ngSubmit)="controlSubmit()">
+    <div>
+      <input
+        formControlName="fname"
+        name="fname"
+        placeholder="Enter First Name"
+        type="text"
+      />
+      <ng-container *ngIf="login.controls.fname.touched">
+        <span *ngIf="login.controls.fname.errors?.['required']"
+          ><br />
+          please fill out this field
+        </span>
+      </ng-container>
     </div>
+    <div>
+      <input
+        formControlName="lname"
+        name="lname"
+        placeholder="Enter Last Name"
+        type="text"
+      />
+      <ng-container *ngIf="login.controls.lname.touched">
+        <span *ngIf="login.controls.lname.errors?.['required']"
+          ><br />
+          please fill out this field
+        </span>
+      </ng-container>
+    </div>
+    <div>
+      <input
+        formControlName="email"
+        name="email"
+        placeholder="Enter Email"
+        type="email"
+      />
+      <ng-container *ngIf="login.controls.email.touched">
+        <span *ngIf="login.controls.email.errors?.['required']"
+          ><br />
+          please fill out this field
+        </span>
+        <span *ngIf="login.controls.email.errors?.['email']"
+          ><br />
+          please enter valid email
+        </span>
+      </ng-container>
+    </div>
+    <div>
+      <input
+        formControlName="password"
+        name="password"
+        placeholder="Password"
+        [type]="login.controls.passwordvisible.value ? 'text' : 'password'"
+      />
+      <ng-container *ngIf="login.controls.password.touched">
+        <span *ngIf="login.controls.password.errors?.['required']">
+          <br />
+          please fill out this field
+        </span>
+        <br />
+        <span *ngIf="login.controls.password.errors?.['minlength']">
+          password should atleast contain
+          {{login.controls.password.errors?.['minlength']?.requiredLength}}
+          characters
+        </span>
+        <br />
+        <span *ngIf="login.controls.password.errors?.['pattern']">
+          password should only contain alphabets
+        </span>
+      </ng-container>
+    </div>
+    <div class="password-visible">
+      <label>
+        Show password
+        <input type="radio" value="show" formControlName="passwordvisible" />
+      </label>
+      <label>
+        Hide password
+        <input type="radio" value="hide" formControlName="passwordvisible" />
+      </label>
+    </div>
+    <div>
+      <input
+        formControlName="dob"
+        name="dob"
+        placeholder="Enterdob"
+        type="date"
+      />
+    </div>
+    <div
+      class="add-address"
+      *ngFor="let x of getAddressFromArray().controls; index as i"
+    >
+      <input
+        [formControlName]="i"
+        name="phno"
+        placeholder="Enter your phone nummber"
+        type="text"
+      />
+      <div class="add-remove-btn">
+        <button class="add-btn" type="button" (click)="controltoAddress()">
+          Add
+        </button>
+        <button class="remove-btn" type="button" (click)="removeAdress(i)">
+          Remove
+        </button>
+      </div>
+    </div>
+    <div>
+      <div
+        class="add-address"
+        *ngFor="let x of getAddressFromArray().controls; index as i"
+      >
+        <input
+          [formControlName]="i"
+          name="address"
+          placeholder="Enter your address"
+          type="text"
+        />
+        <div class="add-remove-btn">
+          <button class="add-btn" type="button" (click)="controltoAddress()">
+            Add
+          </button>
+          <button class="remove-btn" type="button" (click)="removeAdress(i)">
+            Remove
+          </button>
+        </div>
+      </div>
+      <button class="submit-btn">Submit</button>
+    </div>
+  </form>
+  <div class="error-check">
+    {{ login.controls.fname.errors | json }}
   </div>
-  <div>
-    <button class="submit-btn">Submit</button>
-  </div>
-</form>
 </body>

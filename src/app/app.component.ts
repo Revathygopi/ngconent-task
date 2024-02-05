@@ -24,14 +24,15 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   login = new FormGroup({
     fname: new FormControl('', [Validators.required]),
-    lname: new FormControl('', [Validators.required, Validators.email]),
-    email: new FormControl(''),
-    password: new FormControl(''),
+    lname: new FormControl('', [Validators.required]),
+    email: new FormControl('',[Validators.required, Validators.email]),
+    password: new FormControl('',[Validators.required, Validators.minLength(7),Validators.pattern('[a-z]+')]),
+    passwordvisible:new FormControl(''),
     dob: new FormControl(''),
     add: new FormArray([
       new FormGroup(
         {
-          phno:new FormControl(''),
+          phno:new FormControl('',[Validators.required]),
           address:new FormControl('')
 
         }

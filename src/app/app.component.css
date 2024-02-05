@@ -81,3 +81,20 @@ form input {
     background-color: darkcyan;
     border: none;
 }
+span{
+    text-align:center;
+    color:red;
+}
+.error-check
+{
+    text-align:center;
+    color:black;
+    font-weight:700;
+    font-size:1rem;
+    margin-top:10px;
+}
+.password-visible
+{
+    display:flex;
+    justify-content:center;
+}
